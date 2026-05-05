@@ -1,0 +1,21 @@
+# ML model files
+*.pkl
+*.npz
+*.zip
+*.csv
+
+# Jupyter
+*.ipynb
+*.pdf
+__results___files/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Node (if any tools used locally)
+node_modules/

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Purchase Value Prediction · MLP</title>
+  <meta name="description" content="Predicts customer purchase value using a Multi-Layer Perceptron on digital commerce session data." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">
+        <span class="nav__logo-icon">⬡</span>
+        <span>MLP<strong>Predict</strong></span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#tech">Technical</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li>
+          <a href="https://github.com/singh-yash129/Customer-Purchase-Value-Prediction-MLP"
+             target="_blank" rel="noopener" class="nav__cta">View on GitHub</a>
+        </li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── Hero ───────────────────────────────────────────────── -->
+  <header class="hero" id="hero">
+    <div class="hero__bg-grid"></div>
+    <div class="hero__orbs">
+      <div class="orb orb--1"></div>
+      <div class="orb orb--2"></div>
+      <div class="orb orb--3"></div>
+    </div>
+    <div class="hero__inner">
+      <div class="hero__badge animate-fade-in">
+        <span class="badge">🔬 Machine Learning · Deep Learning · Regression</span>
+      </div>
+      <h1 class="hero__title animate-fade-in-up">
+        Customer Purchase<br />
+        <span class="gradient-text">Value Prediction</span>
+      </h1>
+      <p class="hero__subtitle animate-fade-in-up delay-1">
+        A production-grade <strong>Multi-Layer Perceptron</strong> that forecasts session-level
+        revenue on digital commerce platforms — handling zero-inflated targets with custom
+        post-processing logic.
+      </p>
+      <div class="hero__actions animate-fade-in-up delay-2">
+        <a href="https://github.com/singh-yash129/Customer-Purchase-Value-Prediction-MLP"
+           target="_blank" rel="noopener" class="btn btn--primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          Explore the Repository
+        </a>
+        <a href="#about" class="btn btn--ghost">
+          Learn More
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </a>
+      </div>
+
+      <!-- Stat bar -->
+      <div class="hero__stats animate-fade-in-up delay-3">
+        <div class="stat">
+          <span class="stat__value" data-target="15">0</span><span class="stat__unit">+</span>
+          <span class="stat__label">Models Trained</span>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat">
+          <span class="stat__value" data-target="92">0</span><span class="stat__unit">%</span>
+          <span class="stat__label">R² Score</span>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat">
+          <span class="stat__value" data-target="4">0</span><span class="stat__unit">K+</span>
+          <span class="stat__label">Feature Columns</span>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat">
+          <span class="stat__value" data-target="5">0</span><span class="stat__unit"></span>
+          <span class="stat__label">Tech Libraries</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-indicator__dot"></div>
+    </div>
+  </header>
+
+  <!-- ── About ──────────────────────────────────────────────── -->
+  <section class="section about" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Overview</span>
+        <h2 class="section-title">What is this project?</h2>
+        <p class="section-desc">
+          An end-to-end machine learning pipeline that predicts the total purchase spend of a
+          user session, helping e-commerce businesses identify and target high-value customers
+          with precision.
+        </p>
+      </div>
+
+      <div class="about__grid">
+        <div class="about__card card reveal">
+          <div class="card__icon-wrap card__icon-wrap--blue">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          </div>
+          <h3>Zero-Inflated Target</h3>
+          <p>Most sessions have zero purchase value. The model and post-processing pipeline
+             are specifically designed to handle this skewed distribution gracefully.</p>
+        </div>
+        <div class="about__card card reveal delay-1">
+          <div class="card__icon-wrap card__icon-wrap--purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Behavioral Signals</h3>
+          <p>Leverages session-level behavioral data — page views, bounce rate, device type,
+             traffic source — to model purchasing intent.</p>
+        </div>
+        <div class="about__card card reveal delay-2">
+          <div class="card__icon-wrap card__icon-wrap--green">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          </div>
+          <h3>Deep Learning Core</h3>
+          <p>Multi-Layer Perceptron architecture with fully connected layers and ReLU
+             activations to capture complex non-linear feature interactions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Features ───────────────────────────────────────────── -->
+  <section class="section features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Capabilities</span>
+        <h2 class="section-title">Key Features</h2>
+        <p class="section-desc">
+          A comprehensive ML pipeline covering every stage from raw data ingestion to
+          production-ready predictions.
+        </p>
+      </div>
+
+      <div class="features__grid">
+
+        <div class="feature-card reveal">
+          <div class="feature-card__number">01</div>
+          <div class="feature-card__icon">📊</div>
+          <h3>Exploratory Data Analysis</h3>
+          <p>Deep-dive into session distributions, target skewness, correlation matrices,
+             and feature importance plots to guide engineering decisions.</p>
+          <ul class="feature-card__tags">
+            <li>Distribution Analysis</li>
+            <li>Correlation Matrix</li>
+            <li>Outlier Detection</li>
+          </ul>
+        </div>
+
+        <div class="feature-card reveal delay-1">
+          <div class="feature-card__number">02</div>
+          <div class="feature-card__icon">⚙️</div>
+          <h3>Feature Engineering</h3>
+          <p>Automated extraction of temporal features, frequency encoding for
+             high-cardinality columns, and StandardScaler normalization pipelines.</p>
+          <ul class="feature-card__tags">
+            <li>Temporal Features</li>
+            <li>Frequency Encoding</li>
+            <li>StandardScaler</li>
+          </ul>
+        </div>
+
+        <div class="feature-card reveal delay-2">
+          <div class="feature-card__number">03</div>
+          <div class="feature-card__icon">🧠</div>
+          <h3>MLP Architecture</h3>
+          <p>Configurable hidden layers with ReLU activations and a single linear output
+             neuron for continuous regression on purchase value.</p>
+          <ul class="feature-card__tags">
+            <li>ReLU Activations</li>
+            <li>Fully Connected</li>
+            <li>Dropout Regularisation</li>
+          </ul>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feature-card__number">04</div>
+          <div class="feature-card__icon">🔄</div>
+          <h3>Post-Processing Logic</h3>
+          <p>Negative predictions clamped to zero, reflecting real-world constraints and
+             improving overall R² score on the skewed test distribution.</p>
+          <ul class="feature-card__tags">
+            <li>Clipping</li>
+            <li>Zero-Inflation Handling</li>
+            <li>Business Logic</li>
+          </ul>
+        </div>
+
+        <div class="feature-card reveal delay-1">
+          <div class="feature-card__number">05</div>
+          <div class="feature-card__icon">📈</div>
+          <h3>Model Benchmarking</h3>
+          <p>Systematic comparison of 15+ models including baseline linear regression,
+             XGBoost, LightGBM, KNN, SVM, Bagging, and the final MLP.</p>
+          <ul class="feature-card__tags">
+            <li>XGBoost</li>
+            <li>LightGBM</li>
+            <li>Ensemble Methods</li>
+          </ul>
+        </div>
+
+        <div class="feature-card reveal delay-2">
+          <div class="feature-card__number">06</div>
+          <div class="feature-card__icon">🎯</div>
+          <h3>R² Score Evaluation</h3>
+          <p>Model performance quantified using the Coefficient of Determination, with
+             sensitivity analysis on high-spending outliers and per-segment evaluation.</p>
+          <ul class="feature-card__tags">
+            <li>R² Coefficient</li>
+            <li>Residual Analysis</li>
+            <li>Segment Eval</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Technical Highlights ───────────────────────────────── -->
+  <section class="section technical" id="tech">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Architecture</span>
+        <h2 class="section-title">Technical Highlights</h2>
+      </div>
+
+      <div class="technical__layout">
+
+        <!-- Pipeline diagram -->
+        <div class="pipeline reveal">
+          <div class="pipeline__step">
+            <div class="pipeline__dot pipeline__dot--blue"></div>
+            <div class="pipeline__content">
+              <h4>Raw Session Data</h4>
+              <p>Session logs with numerical, categorical, high-cardinality and time-based features from digital commerce events.</p>
+            </div>
+          </div>
+          <div class="pipeline__connector"></div>
+          <div class="pipeline__step">
+            <div class="pipeline__dot pipeline__dot--purple"></div>
+            <div class="pipeline__content">
+              <h4>Preprocessing Pipeline</h4>
+              <p>Missing value imputation, One-Hot & Frequency Encoding, StandardScaler normalisation, datetime decomposition.</p>
+            </div>
+          </div>
+          <div class="pipeline__connector"></div>
+          <div class="pipeline__step">
+            <div class="pipeline__dot pipeline__dot--pink"></div>
+            <div class="pipeline__content">
+              <h4>MLP Training</h4>
+              <p>Fully connected layers with ReLU activations, configurable depth/width, Adam optimiser, early stopping.</p>
+            </div>
+          </div>
+          <div class="pipeline__connector"></div>
+          <div class="pipeline__step">
+            <div class="pipeline__dot pipeline__dot--green"></div>
+            <div class="pipeline__content">
+              <h4>Post-Processing & Evaluation</h4>
+              <p>Clamp negatives to zero → R² Score evaluation → submission ready CSV output.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code snippet -->
+        <div class="code-block reveal delay-2">
+          <div class="code-block__header">
+            <span class="code-block__dot code-block__dot--red"></span>
+            <span class="code-block__dot code-block__dot--yellow"></span>
+            <span class="code-block__dot code-block__dot--green"></span>
+            <span class="code-block__filename">post_process.py</span>
+          </div>
+          <pre class="code-block__body"><code><span class="code-kw">import</span> numpy <span class="code-kw">as</span> np
+<span class="code-kw">from</span> sklearn.neural_network <span class="code-kw">import</span> MLPRegressor
+
+<span class="code-comment"># Train the MLP model</span>
+mlp = MLPRegressor(
+    hidden_layer_sizes=(<span class="code-num">256</span>, <span class="code-num">128</span>, <span class="code-num">64</span>),
+    activation=<span class="code-str">'relu'</span>,
+    max_iter=<span class="code-num">500</span>,
+    early_stopping=<span class="code-kw">True</span>
+)
+mlp.fit(X_train, y_train)
+
+<span class="code-comment"># Predict & clamp negatives → zero</span>
+predictions = mlp.predict(X_test)
+predictions[predictions &lt; <span class="code-num">0</span>] = <span class="code-num">0</span>
+
+<span class="code-comment"># Evaluate with R² Score</span>
+<span class="code-kw">from</span> sklearn.metrics <span class="code-kw">import</span> r2_score
+score = r2_score(y_test, predictions)
+<span class="code-fn">print</span>(<span class="code-str">f"R² Score: <span class="code-interp">{score:.4f}</span>"</span>)</code></pre>
+        </div>
+
+      </div>
+
+      <!-- Challenges -->
+      <div class="challenges reveal">
+        <h3 class="challenges__title">Challenges &amp; Observations</h3>
+        <div class="challenges__grid">
+          <div class="challenge-item">
+            <span class="challenge-item__icon">⚠️</span>
+            <div>
+              <strong>Highly Zero-Inflated Target</strong>
+              <p>Most sessions result in zero spend, creating extreme class imbalance that degrades naive models.</p>
+            </div>
+          </div>
+          <div class="challenge-item">
+            <span class="challenge-item__icon">🔍</span>
+            <div>
+              <strong>Dual-Task Nature</strong>
+              <p>The model implicitly performs both purchase classification and value regression simultaneously.</p>
+            </div>
+          </div>
+          <div class="challenge-item">
+            <span class="challenge-item__icon">💡</span>
+            <div>
+              <strong>Outlier Sensitivity</strong>
+              <p>R² metric is heavily influenced by high-spending outliers, requiring careful residual analysis.</p>
+            </div>
+          </div>
+          <div class="challenge-item">
+            <span class="challenge-item__icon">🔗</span>
+            <div>
+              <strong>Data Leakage Risk</strong>
+              <p>Session-end features can inadvertently leak future information — handled via strict train/test splitting.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Dataset ────────────────────────────────────────────── -->
+  <section class="section dataset" id="dataset">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Data</span>
+        <h2 class="section-title">Dataset &amp; Features</h2>
+        <p class="section-desc">Session-level logs with four major feature groups driving purchase prediction.</p>
+      </div>
+
+      <div class="dataset__grid">
+        <div class="dataset-card reveal">
+          <div class="dataset-card__header dataset-card__header--blue">
+            <span>👤</span> User Behavior
+          </div>
+          <ul>
+            <li><code>totalHits</code> — Total page interactions</li>
+            <li><code>pageViews</code> — Pages visited per session</li>
+            <li><code>bounces</code> — Single-page sessions</li>
+            <li><code>newVisits</code> — First-time visitor flag</li>
+            <li><code>sessionStart</code> — Session timestamp</li>
+          </ul>
+          <div class="dataset-card__badge dataset-card__badge--high">High Impact</div>
+        </div>
+
+        <div class="dataset-card reveal delay-1">
+          <div class="dataset-card__header dataset-card__header--purple">
+            <span>💻</span> Technical
+          </div>
+          <ul>
+            <li><code>deviceType</code> — Desktop / Mobile / Tablet</li>
+            <li><code>browser</code> — Chrome, Safari, etc.</li>
+            <li><code>OS</code> — Operating system</li>
+            <li><code>isMobile</code> — Mobile flag</li>
+            <li><code>language</code> — Browser language</li>
+          </ul>
+          <div class="dataset-card__badge dataset-card__badge--medium">Medium Impact</div>
+        </div>
+
+        <div class="dataset-card reveal delay-2">
+          <div class="dataset-card__header dataset-card__header--green">
+            <span>🚦</span> Traffic Source
+          </div>
+          <ul>
+            <li><code>trafficSource.medium</code> — Organic / CPC / etc.</li>
+            <li><code>source</code> — Referring domain</li>
+            <li><code>campaign</code> — UTM campaign name</li>
+            <li><code>gclIdPresent</code> — Google Ads click ID</li>
+          </ul>
+          <div class="dataset-card__badge dataset-card__badge--high">High Impact</div>
+        </div>
+
+        <div class="dataset-card reveal delay-3">
+          <div class="dataset-card__header dataset-card__header--orange">
+            <span>🌍</span> Geography
+          </div>
+          <ul>
+            <li><code>city</code> — User city</li>
+            <li><code>country</code> — User country</li>
+            <li><code>continent</code> — Geographic region</li>
+          </ul>
+          <div class="dataset-card__badge dataset-card__badge--low">Low–Medium Impact</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Tech Stack ─────────────────────────────────────────── -->
+  <section class="section stack" id="stack">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Technologies</span>
+        <h2 class="section-title">Tech Stack</h2>
+        <p class="section-desc">Built entirely with the Python data science ecosystem.</p>
+      </div>
+
+      <div class="stack__grid">
+        <div class="stack-card reveal">
+          <div class="stack-card__logo stack-card__logo--python">Py</div>
+          <h4>Python 3</h4>
+          <p>Core language for data processing, modelling and evaluation.</p>
+        </div>
+        <div class="stack-card reveal delay-1">
+          <div class="stack-card__logo stack-card__logo--pandas">Pd</div>
+          <h4>Pandas &amp; NumPy</h4>
+          <p>Data wrangling, feature extraction and numerical operations.</p>
+        </div>
+        <div class="stack-card reveal delay-2">
+          <div class="stack-card__logo stack-card__logo--sklearn">Sk</div>
+          <h4>Scikit-learn</h4>
+          <p>MLP Regressor, preprocessing pipelines, and evaluation metrics.</p>
+        </div>
+        <div class="stack-card reveal delay-3">
+          <div class="stack-card__logo stack-card__logo--tf">TF</div>
+          <h4>TensorFlow / Keras</h4>
+          <p>Deep learning model experimentation and architecture tuning.</p>
+        </div>
+        <div class="stack-card reveal delay-4">
+          <div class="stack-card__logo stack-card__logo--xgb">XG</div>
+          <h4>XGBoost &amp; LightGBM</h4>
+          <p>Gradient boosting baselines for benchmarking against MLP.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Future Work ────────────────────────────────────────── -->
+  <section class="section future" id="future">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Roadmap</span>
+        <h2 class="section-title">Future Improvements</h2>
+      </div>
+      <div class="future__grid">
+        <div class="future-item reveal">
+          <div class="future-item__icon">🎲</div>
+          <h4>Hurdle Models</h4>
+          <p>Two-stage model: first classify purchase vs no-purchase, then regress on value for buyers only.</p>
+        </div>
+        <div class="future-item reveal delay-1">
+          <div class="future-item__icon">🔁</div>
+          <h4>Sequential Models</h4>
+          <p>LSTM and Transformer architectures to model temporal patterns within user sessions.</p>
+        </div>
+        <div class="future-item reveal delay-2">
+          <div class="future-item__icon">⚡</div>
+          <h4>Real-Time Inference</h4>
+          <p>Constrained feature engineering for real-time serving, removing session-end information.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ────────────────────────────────────────────────── -->
+  <section class="cta">
+    <div class="cta__orbs">
+      <div class="orb orb--4"></div>
+      <div class="orb orb--5"></div>
+    </div>
+    <div class="container">
+      <div class="cta__inner reveal">
+        <span class="section-label">Open Source</span>
+        <h2>Explore the Full Project</h2>
+        <p>Dive into the Jupyter notebook, trained models, and complete source code on GitHub.</p>
+        <a href="https://github.com/singh-yash129/Customer-Purchase-Value-Prediction-MLP"
+           target="_blank" rel="noopener" class="btn btn--primary btn--large">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          View on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <span class="nav__logo-icon">⬡</span>
+          <span>MLP<strong>Predict</strong></span>
+        </div>
+        <p class="footer__copy">Built by <a href="https://github.com/singh-yash129" target="_blank" rel="noopener">singh-yash129</a> · MIT License</p>
+        <a href="https://github.com/singh-yash129/Customer-Purchase-Value-Prediction-MLP"
+           target="_blank" rel="noopener" class="footer__gh" aria-label="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
