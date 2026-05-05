@@ -96,8 +96,9 @@
         if (entry.isIntersecting) {
           const statValues = entry.target.querySelectorAll('[data-target]');
           statValues.forEach(el => {
-            const target = parseInt(el.getAttribute('data-target'), 10);
-            animateCounter(el, target, 1600);
+            const target   = parseInt(el.getAttribute('data-target'), 10);
+            const duration = target >= 1000 ? 2400 : 1600;
+            animateCounter(el, target, duration);
           });
           statsObserver.unobserve(entry.target);
         }
